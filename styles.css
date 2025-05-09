@@ -68,6 +68,20 @@ nav ul li a {
 section.banner {
     background: linear-gradient(to left, #357E62, #D9EAE5); /* Fondo degradado del banner */
     padding: 3rem 0; /* Relleno del banner */
+    opacity: 0; /* Comienza invisible */
+    animation: fadeIn 1s forwards; /* Añade la animación de desvanecimiento */
+}
+
+/* Animación para la aparición gradual */
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(50px); /* Se mueve desde abajo */
+    }
+    100% {
+        opacity: 1; /* Se vuelve completamente visible */
+        transform: translateY(0); /* Vuelve a su posición original */
+    }
 }
 
 /* Estilos para el contenedor del banner */
@@ -77,6 +91,20 @@ section.banner {
     display: grid; /* Usa un diseño de cuadrícula para el contenedor */
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Distribuye los elementos de forma automática */
     grid-gap: 2rem; /* Espacio entre los elementos de la cuadrícula */
+    opacity: 0; /* Comienza invisible */
+    animation: slideIn 1s 0.5s forwards; /* Aparece con un retraso de medio segundo */
+}
+
+/* Animación para la entrada de la cuadrícula */
+@keyframes slideIn {
+    0% {
+        opacity: 0; /* Comienza invisible */
+        transform: translateX(-50px); /* Se mueve desde la izquierda */
+    }
+    100% {
+        opacity: 1; /* Se vuelve completamente visible */
+        transform: translateX(0); /* Vuelve a su posición original */
+    }
 }
 
 /* Estilos para la primera columna del banner */
@@ -84,6 +112,8 @@ section.banner {
     display: flex; /* Hace que los elementos de la columna se muestren en línea */
     align-items: center; /* Alinea los elementos verticalmente */
     justify-content: center; /* Alinea los elementos horizontalmente */
+    opacity: 0; /* Comienza invisible */
+    animation: fadeIn 1s 0.5s forwards; /* Añade la animación de desvanecimiento con un retraso */
 }
 
 /* Estilos para la imagen del banner */
@@ -97,6 +127,8 @@ section.banner {
     display: flex; /* Hace que los elementos de la columna se muestren en línea */
     justify-content: center; /* Alinea los elementos horizontalmente */
     flex-direction: column; /* Muestra los elementos en columna */
+    opacity: 0; /* Comienza invisible */
+    animation: fadeIn 1s 0.7s forwards; /* Añade la animación de desvanecimiento con un retraso */
 }
 
 /* Estilos para el título del banner */
@@ -154,6 +186,13 @@ h1 {
     justify-content: center; /* Alinea los elementos al centro */
     box-shadow: 0px 0px 55px 5px rgba(33, 143, 106, 0.2); /* Sombra de los cuadros */
     border-radius: 10px; /* Borde redondeado de los cuadros */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto de sobresalir al pasar el mouse */
+.boxS:hover {
+    transform: translateY(-10px); /* Mueve el cuadro hacia arriba */
+    box-shadow: 0px 10px 30px rgba(33, 143, 106, 0.3); /* Cambia la sombra para dar más énfasis */
 }
 
 /* Estilos para las imágenes de los cuadros de servicios */
@@ -375,4 +414,15 @@ form button[type="submit"]:hover {
     font-size: 1.5rem;
     color: #225A47;
     margin-bottom: 1rem;
+}
+
+/* Estilos para el footer */
+footer {
+    background: #2A7157; /* Color de fondo del footer */
+    color: #fff; /* Color del texto del footer */
+    padding: 2rem 0; /* Relleno del footer */
+    text-align: center; /* Alineación del texto al centro */
+    position: relative; /* Posición relativa para el footer */
+    bottom: 0; /* Fija el footer en la parte inferior */
+    width: 100%; /* Ancho completo del footer */
 }
