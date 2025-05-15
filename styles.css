@@ -417,12 +417,31 @@ form button[type="submit"]:hover {
 }
 
 /* Estilos para el footer */
-footer {
-    background: #2A7157; /* Color de fondo del footer */
-    color: #fff; /* Color del texto del footer */
-    padding: 2rem 0; /* Relleno del footer */
-    text-align: center; /* Alineación del texto al centro */
-    position: relative; /* Posición relativa para el footer */
-    bottom: 0; /* Fija el footer en la parte inferior */
-    width: 100%; /* Ancho completo del footer */
+.footer {
+  background-color: #2d2d2d;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-networks {
+  margin-top: 10px;
+}
+
+.social-networks h4 {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
