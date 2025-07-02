@@ -154,6 +154,21 @@ h1 {
     text-decoration: none; /* Elimina la decoración de texto */
 }
 
+/* Estilos específicos para el botón "Get Started" en el banner */
+.col2 .nav-buttons {
+    float: none; /* Elimina el float */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 0 0;
+    padding: 0;
+    width: 100%;
+}
+
+.col2 .nav-buttons li {
+    margin: 0;
+}
+
 /* Estilos para la sección de servicios */
 .services {
     background: #F0F9F5; /* Fondo de la sección de servicios */
@@ -364,26 +379,34 @@ form button[type="submit"]:hover {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    float: right;
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    align-items: center;
 }
 
 .nav-buttons li {
     display: inline-block;
-    margin-left: 10px;
+    margin: 0 auto; /* Centra el elemento */
 }
 
 .nav-buttons li a {
     display: inline-block;
-    padding: 5px 20px; /* Modificado el valor del padding vertical */
-    line-height: 2; /* Reducir la altura del texto dentro del botón */
-    background-color: #333;
+    padding: 12px 30px; /* Aumenté el padding para mejor apariencia */
+    line-height: 1.4;
+    background-color: #225A47; /* Cambié al color principal del sitio */
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px; /* Bordes más redondeados */
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease; /* Animación suave */
+    box-shadow: 0 4px 15px rgba(34, 90, 71, 0.3); /* Sombra elegante */
 }
 
 .nav-buttons li a:hover {
-    background-color: #555;
+    background-color: #357E62;
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 6px 20px rgba(34, 90, 71, 0.4);
 }
 
 
@@ -444,5 +467,503 @@ form button[type="submit"]:hover {
   margin: 0 6px;
   vertical-align: middle;
   fill: #ffffff;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Animación del menú hamburguesa */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Smooth scroll para toda la página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Focus states para accesibilidad */
+nav ul li a:focus,
+.nav-buttons li a:focus,
+form button:focus,
+.hamburger:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Mejoras para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo,
+    .imgBanner,
+    .imgTeam,
+    .boxS img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Tablets grandes y pantallas medianas (hasta 1024px) */
+@media screen and (max-width: 1024px) {
+    .containerS {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .boxS img {
+        width: 250px;
+    }
+    
+    .video-box {
+        width: 48%;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    #txtBanner {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+}
+
+/* Tablets (hasta 768px) */
+@media screen and (max-width: 768px) {
+    /* Navegación responsive */
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 15px;
+        height: auto;
+        min-height: 70px;
+    }
+    
+    .nav-logo .logo {
+        height: 60px;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #2A7157;
+        flex-direction: column;
+        text-align: center;
+        z-index: 999;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        display: block;
+        margin: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px;
+        line-height: normal;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Botones de navegación */
+    .nav-buttons {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #2A7157;
+        flex-direction: column;
+        padding: 10px 0;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nav-buttons.active {
+        display: flex;
+    }
+    
+    .nav-buttons li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    /* Banner */
+    .containerB {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .col2 .nav-buttons {
+        position: static; /* Resetea la posición absoluta en el banner */
+        background: transparent; /* Sin fondo en el banner */
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    .imgBanner {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    .col2 {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    #txtBanner {
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        margin: 1.5rem 0;
+    }
+    
+    /* Servicios */
+    .containerS {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .boxS {
+        padding: 1.5rem;
+    }
+    
+    .boxS img {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .subServices h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Equipo */
+    .containerE {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .imgTeam {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    /* Videos */
+    .video-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .video-box {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    /* Contacto */
+    .contact-container {
+        width: 95%;
+        padding: 0 15px;
+    }
+    
+    .contact-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media screen and (max-width: 480px) {
+    /* Navegación */
+    nav {
+        padding: 0 10px;
+        min-height: 60px;
+    }
+    
+    .nav-logo .logo {
+        height: 50px;
+    }
+    
+    nav ul {
+        top: 60px;
+    }
+    
+    /* Banner */
+    section.banner {
+        padding: 2rem 0;
+    }
+    
+    .containerB {
+        width: 95%;
+        gap: 1rem;
+    }
+    
+    .col2 {
+        padding: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    #txtBanner {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .nav-buttons li a {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 20px;
+    }
+    
+    /* Asegurar que el botón en el banner se mantenga centrado */
+    .col2 .nav-buttons {
+        position: static;
+        background: transparent;
+        padding: 0;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    
+    /* Servicios */
+    .services {
+        padding: 2rem 0;
+    }
+    
+    .containerS {
+        width: 95%;
+        gap: 1rem;
+    }
+    
+    .boxS {
+        padding: 1rem;
+    }
+    
+    .subServices {
+        padding-bottom: 2rem;
+    }
+    
+    .subServices h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .subServices p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .boxS p {
+        font-size: 0.9rem;
+    }
+    
+    /* Equipo */
+    .team {
+        padding: 2rem 0;
+    }
+    
+    .containerE {
+        width: 95%;
+        gap: 1rem;
+    }
+    
+    .boxE {
+        padding: 1rem;
+    }
+    
+    /* Videos */
+    .video-section {
+        padding: 2rem 0;
+    }
+    
+    .video-box {
+        padding: 0.5rem;
+    }
+    
+    .video-box h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .video-box iframe {
+        height: 200px;
+    }
+    
+    /* Contacto */
+    .contact {
+        padding: 2rem 0;
+    }
+    
+    .contact-container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    
+    .contact-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        padding: 0.7rem;
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+    
+    form button[type="submit"] {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 15px 0;
+    }
+    
+    .footer-content {
+        padding: 0 15px;
+    }
+    
+    .social-networks h4 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .social-icon {
+        width: 16px;
+        height: 16px;
+        margin: 0 4px;
+    }
+}
+
+/* Móviles muy pequeños (hasta 320px) */
+@media screen and (max-width: 320px) {
+    .containerB,
+    .containerS,
+    .containerE,
+    .contact-container {
+        width: 98%;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    #txtBanner {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+    }
+    
+    .subServices h2 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-title {
+        font-size: 1.2rem;
+    }
+    
+    .boxS,
+    .boxE {
+        padding: 0.8rem;
+    }
+}
+
+/* Mejoras generales para touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .boxS:hover {
+        transform: none;
+        box-shadow: 0px 0px 55px 5px rgba(33, 143, 106, 0.2);
+    }
+    
+    nav ul li a {
+        padding: 20px 13px; /* Área de toque más grande */
+    }
+    
+    .nav-buttons li a {
+        padding: 12px 20px; /* Área de toque más grande */
+    }
+    
+    /* Asegurar centrado del botón en banner para touch devices */
+    .col2 .nav-buttons {
+        justify-content: center;
+    }
+}
+
+/* Orientación landscape para tablets */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .containerB {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+    
+    .imgBanner {
+        width: 60%;
+    }
+    
+    section.banner {
+        padding: 2rem 0;
+    }
 }
 

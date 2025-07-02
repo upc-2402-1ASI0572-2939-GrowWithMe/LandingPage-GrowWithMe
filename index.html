@@ -17,14 +17,19 @@
             <div class="nav-logo">
                 <img src="assets/Logo-GWM.PNG" alt="Logo" class="logo">
             </div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#team" onclick="closeMenu()">Team</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
             </ul>
             <!-- 
-            <ul class="nav-buttons">
+            <ul class="nav-buttons" id="nav-buttons">
                 <li><a href="https://grow-with-me.netlify.app/farmer-sign-up" target="_blank">Sign Up</a></li>
                 <li><a href="https://grow-with-me.netlify.app" target="_blank">Sign In</a></li>
             </ul>
@@ -125,7 +130,7 @@
                 </div>
                 <div class="video-box">
                     <h3>About the Team</h3>
-                    <iframe width="100%" height="315" src="" title="About the Team" frameborder="0"
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/I26qnwOH_r8" title="About the Team" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
@@ -179,6 +184,88 @@
 
     </main>
     <script>
+        // Función para alternar el menú móvil
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const navButtons = document.getElementById('nav-buttons');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navMenu.classList.toggle('active');
+            if (navButtons) {
+                navButtons.classList.toggle('active');
+            }
+            hamburger.classList.toggle('active');
+        }
+
+        // Función para cerrar el menú móvil
+        function closeMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const navButtons = document.getElementById('nav-buttons');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navMenu.classList.remove('active');
+            if (navButtons) {
+                navButtons.classList.remove('active');
+            }
+            hamburger.classList.remove('active');
+        }
+
+        // Cerrar menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!nav.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // Cerrar menú al cambiar el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animaciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.boxS, .boxE, .video-box');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 
